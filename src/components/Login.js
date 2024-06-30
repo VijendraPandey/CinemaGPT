@@ -7,15 +7,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { avatar, bgImage } from "../utils/constants";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const name = useRef(null);
@@ -40,24 +39,21 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL: "https://example.com/jane-q-user/profile.jpg",
+            photoURL: avatar,
           })
             .then(() => {
               const { uid, email, displayName } = auth.currentUser;
               dispatch(
                 addUser({ uid: uid, email: email, displayName: displayName })
               );
-              navigate("/browse");
             })
             .catch((error) => {
               const errorCode = error.code.split("/")[1].replace(/-/g, " ");
               const errorMessage = error.message;
               setErrorMessage(errorCode);
             });
-          console.log(user);
         })
         .catch((error) => {
-          console.log(error);
           const errorCode = error.code.split("/")[1].replace(/-/g, " ");
           const errorMessage = error.message;
           setErrorMessage(errorCode);
@@ -71,8 +67,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code.split("/")[1].replace(/-/g, " ");
@@ -92,7 +86,7 @@ const Login = () => {
       <Header />
       <div className="">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/335ddde7-3955-499c-b4cc-ca2eb7e1ae71/a7d20bc1-831c-4f9d-8153-11bdf7a08d23/IN-en-20240624-POP_SIGNUP_TWO_WEEKS-perspective_WEB_13cda806-d858-493e-b4aa-f2792ff965dc_large.jpg"
+          src={bgImage}
           alt="bg-img"
           className="bg-cover bg-center w-[100%] h-[100vh]"
         ></img>
