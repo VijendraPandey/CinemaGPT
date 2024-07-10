@@ -4,7 +4,7 @@ export const logo = (
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
     role="img"
-    className="default-ltr-cache-1d568uk ev1dnif2 mt-5"
+    className="default-ltr-cache-1d568uk ev1dnif2 mt-5 md:mx-0"
     fill="red"
   >
     <g>

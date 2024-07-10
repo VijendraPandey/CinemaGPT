@@ -2,17 +2,17 @@ import React from "react";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="w-full aspect-video pt-72 px-20 absolute text-white ">
-      <h1 className="text-6xl font-bold">{title}</h1>
-      <p className="py-6 text-lg w-1/2">{overview}</p>
+    <div className="w-full aspect-video pt-96 px-10 absolute text-white ">
+      <h1 className="text-3xl md:text-6xl font-bold">{title}</h1>
+      <p className="hidden md:inline-block py-6 text-lg w-1/2">{overview}</p>
       <div className="flex gap-5">
-        <button className="flex justify-center items-center gap-3 hover:bg-opacity-80 bg-white text-black py-2 px-6 text-lg font-bold  rounded-sm">
+        <button className="flex justify-center items-center gap-3 hover:bg-opacity-80 bg-white text-black md:py-2 px-3 md:px-6 text-md md:text-lg font-bold  rounded-sm">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              width="20"
-              height="20"
+              width="15"
+              height="15"
               viewBox="0 0 24 24"
               role="img"
               data-icon="PlayStandard"
@@ -26,7 +26,7 @@ const VideoTitle = ({ title, overview }) => {
           </div>
           Play
         </button>
-        <button className="flex items-center gap-3 bg-gray-600 hover:bg-gray-700 bg-opacity-85 text-white py-3 px-8 text-xl rounded-sm">
+        <button className="flex items-center gap-3 bg-gray-600 hover:bg-gray-700 bg-opacity-85 text-white py-2 md:py-3 px-5 md:px-8 text-xl rounded-sm">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"

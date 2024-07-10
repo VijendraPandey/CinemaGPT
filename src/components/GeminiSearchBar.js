@@ -55,20 +55,20 @@ const GeminiSearchBar = () => {
   };
 
   return (
-    <div className="pt-[10%] flex justify-center">
+    <div className="pt-[40%] md:pt-[10%] flex justify-center">
       <form
-        className="w-1/2 bg-black grid grid-cols-12"
+        className="w-full md:w-1/2 bg-black grid grid-cols-12"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
           ref={searchText}
-          className="p-4 m-4 col-span-9"
+          className="p-4 m-4 col-span-8 md:col-span-9"
           type="text"
           placeholder="What would you like to watch today?"
         ></input>
         <button
           onClick={handleGeminiSearchClick}
-          className="col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-md"
+          className="col-span-4 md:col-span-3 m-4 py-2 px-4 bg-red-700 text-white rounded-md"
         >
           Search
         </button>
