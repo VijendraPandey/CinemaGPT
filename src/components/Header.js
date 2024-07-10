@@ -5,11 +5,17 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { iconURL, logo } from "../utils/constants";
+import { toggleGeminiSearchView } from "../utils/geminiSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
+
+  const handleGeminiSearchClick = () => {
+    dispatch(toggleGeminiSearchView());
+  };
 
   const handleSignOut = () => {
     signOut(auth)
@@ -32,7 +38,6 @@ const Header = () => {
         navigate("/");
       }
     });
-
     return () => unsubscribe();
   }, []);
 
@@ -41,6 +46,12 @@ const Header = () => {
       <div className="">{logo}</div>
       {user && (
         <div className="flex items-center -mt-24 gap-5">
+          <button
+            onClick={handleGeminiSearchClick}
+            className="py-2 px-4 bg-purple-400 text-white rounded-md bg-opacity-55"
+          >
+            {!showGeminiSearch ? "Gemini Search" : "Homepage"}
+          </button>
           <img src={iconURL} alt="user-icon"></img>
           <button
             onClick={handleSignOut}
